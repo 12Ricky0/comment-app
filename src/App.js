@@ -7,7 +7,8 @@ import { Theme } from "./Components/Image";
 
 function App() {
 
-  Axios.defaults.withCredentials = true;
+  // Axios.defaults.withCredentials = true;
+
 
   const [userReply, setUserReply] = useState({
     userComment: ""
@@ -56,7 +57,7 @@ function App() {
 
 
     if (formid === secondData._id) {
-      Axios.post(`${process.env.REACT_APP_API_KEY}/articles/${secondData._id}`, userData, {
+      Axios.post(`https://server-ae3z.onrender.com/articles/${secondData._id}`, userData, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
@@ -65,7 +66,7 @@ function App() {
     }
 
     else if (formid === data._id) {
-      Axios.post(`${process.env.REACT_APP_API_KEY}/articles/${data._id}`, userData, {
+      Axios.post(`https://server-ae3z.onrender.com/articles/${data._id}`, userData, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
@@ -74,7 +75,7 @@ function App() {
 
     }
     else if (formid === thirdData._id) {
-      Axios.post(`${process.env.REACT_APP_API_KEY}/articles/${thirdData._id}`, userData, {
+      Axios.post(`https://server-ae3z.onrender.com/articles/${thirdData._id}`, userData, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
@@ -91,7 +92,7 @@ function App() {
     }
 
     e.preventDefault();
-    Axios.post(`${process.env.REACT_APP_API_KEY}/articles/${thirdData._id}`, userData, {
+    Axios.post(`https://server-ae3z.onrender.com/articles/${thirdData._id}`, userData, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -102,15 +103,15 @@ function App() {
 
   async function handleDelete(id) {
 
-    await Axios.delete(`${process.env.REACT_APP_API_KEY}/articles/${data._id}/comment/${id}`)
+    await Axios.delete(`https://server-ae3z.onrender.com/articles/${data._id}/comment/${id}`)
     const newData = input.filter((el) => el._id !== id);
     setInput(newData);
 
-    await Axios.delete(`${process.env.REACT_APP_API_KEY}/articles/${secondData._id}/comment/${id}`)
+    await Axios.delete(`https://server-ae3z.onrender.com/articles/${secondData._id}/comment/${id}`)
     const newData2 = secondInput.filter((el) => el._id !== id);
     setSecondInput(newData2);
 
-    await Axios.delete(`${process.env.REACT_APP_API_KEY}/articles/${thirdData._id}/comment/${id}`)
+    await Axios.delete(`https://server-ae3z.onrender.com/articles/${thirdData._id}/comment/${id}`)
     const newData3 = thirdInput.filter((el) => el._id !== id);
     setthirdInput(newData3);
 
@@ -119,7 +120,7 @@ function App() {
   function editedComment(id, formid) {
 
     if (secondData._id === formid) {
-      Axios.patch(`${process.env.REACT_APP_API_KEY}/articles/${secondData._id}/comment/${id}`, {
+      Axios.patch(`https://server-ae3z.onrender.com/articles/${secondData._id}/comment/${id}`, {
         content: userReply.userComment
       }, {
         headers: {
@@ -129,7 +130,7 @@ function App() {
     }
 
     else if (data._id === formid) {
-      Axios.patch(`${process.env.REACT_APP_API_KEY}/articles/${data._id}/comment/${id}`, {
+      Axios.patch(`https://server-ae3z.onrender.com/articles/${data._id}/comment/${id}`, {
         content: userReply.userComment
       }
         , {
@@ -140,7 +141,7 @@ function App() {
         })
     }
     else if (thirdData._id === formid) {
-      Axios.patch(`${process.env.REACT_APP_API_KEY}/articles/${thirdData._id}/comment/${id}`, {
+      Axios.patch(`https://server-ae3z.onrender.com/articles/${thirdData._id}/comment/${id}`, {
         content: userReply.userComment
       }, {
         headers: {
@@ -152,7 +153,7 @@ function App() {
   }
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_KEY}/articles/6468f059eaa6080d903bcef9`)
+    Axios.get("https://server-ae3z.onrender.com/articles/6468f059eaa6080d903bcef9")
       .then((response) => {
         setData(response.data);
 
@@ -196,7 +197,7 @@ function App() {
   }, [data, input]);
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_KEY}/articles/6457f50db459c14c636fab4e`)
+    Axios.get("https://server-ae3z.onrender.com/articles/6457f50db459c14c636fab4e")
 
       .then((response) => {
         setSecondData(response.data);
@@ -240,7 +241,7 @@ function App() {
 
 
   useEffect(() => {
-    Axios.get(`${process.env.REACT_APP_API_KEY}/articles/6472f0c8afeebdac86c83fb2`)
+    Axios.get("https://server-ae3z.onrender.com/articles/6472f0c8afeebdac86c83fb2")
       .then((response) => {
         setThirdData(response.data);
 
