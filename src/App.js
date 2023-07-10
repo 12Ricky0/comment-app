@@ -7,9 +7,6 @@ import { Theme } from "./Components/Image";
 
 function App() {
 
-  // Axios.defaults.withCredentials = true;
-
-
   const [userReply, setUserReply] = useState({
     userComment: ""
   });
